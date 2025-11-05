@@ -1,0 +1,196 @@
+/* styles.css - Стили для страницы профиля */
+
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-container h1 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.profile-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.profile-info {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.profile-info p {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: #f8f9ff;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-info p:hover {
+    transform: translateX(10px);
+    background: linear-gradient(135deg, #f8f9ff, #e8edff);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.profile-info strong {
+    color: #667eea;
+    font-weight: 600;
+    min-width: 120px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.profile-info p:nth-child(1) {
+    border-left-color: #667eea;
+    animation: slideIn 0.6s ease-out 0.1s both;
+}
+
+.profile-info p:nth-child(2) {
+    border-left-color: #764ba2;
+    animation: slideIn 0.6s ease-out 0.2s both;
+}
+
+.profile-info p:nth-child(3) {
+    border-left-color: #5a67d8;
+    animation: slideIn 0.6s ease-out 0.3s both;
+}
+
+.profile-info p:nth-child(4) {
+    border-left-color: #4c51bf;
+    animation: slideIn 0.6s ease-out 0.4s both;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Декоративные элементы */
+.profile-info::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Иконки для полей (можно добавить через псевдоэлементы) */
+.profile-info p::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .profile-info {
+        padding: 2rem 1.5rem;
+    }
+
+    .profile-container h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .profile-info strong {
+        min-width: auto;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .profile-info {
+        padding: 1.5rem 1rem;
+    }
+
+    .profile-container h1 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+

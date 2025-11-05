@@ -1,0 +1,182 @@
+.design-pro-container {
+    min-height: 80vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.design-pro-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="100,100 200,50 300,100 250,200 150,200"/><polygon fill="white" points="600,150 700,100 800,150 750,250 650,250"/><polygon fill="white" points="400,400 500,350 600,400 550,500 450,500"/></svg>');
+    background-size: 200px;
+}
+
+.design-pro-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Стили для заголовка */
+.main-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Playfair Display', serif;
+}
+
+.main-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* Стили для контента */
+.content-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 30px;
+}
+
+/* Стили для неавторизованных пользователей */
+.auth-message {
+    text-align: center;
+    padding: 40px;
+}
+
+.auth-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #667eea;
+}
+
+.auth-text {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.auth-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.auth-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .design-pro-container {
+        padding: 40px 15px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .main-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .content-section {
+        padding: 30px 20px;
+    }
+
+    .auth-icon {
+        font-size: 3rem;
+    }
+
+    .auth-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Дополнительные декоративные элементы */
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 5%;
+    animation-delay: 4s;
+}

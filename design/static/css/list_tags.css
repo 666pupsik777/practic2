@@ -1,0 +1,317 @@
+/* styles.css - Стили для страницы заказов */
+
+.orders-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.orders-container h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.orders-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.order-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.order-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.order-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+}
+
+.order-item img {
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+    border: 3px solid #f8f9ff;
+}
+
+.order-item:hover img {
+    transform: scale(1.05);
+}
+
+.order-item span {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f8f9ff;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.order-item span:hover {
+    background: linear-gradient(135deg, #f8f9ff, #e8edff);
+    transform: translateX(5px);
+}
+
+.order-item span strong {
+    color: #667eea;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Стили для статуса заказа */
+.order-item span:nth-child(4) {
+    border-left-color: #764ba2;
+}
+
+.order-item span:nth-child(5) {
+    border-left-color: #5a67d8;
+}
+
+.order-item span:nth-child(6) {
+    border-left-color: #4c51bf;
+}
+
+/* Стили для кнопки удаления */
+.order-item form {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.order-item button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.order-item button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.order-item button:active {
+    transform: translateY(-1px);
+}
+
+/* Стили для пустого состояния */
+.orders-container:empty::before {
+    content: 'У вас пока нет заказов';
+    text-align: center;
+    display: block;
+    color: #666;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+}
+
+/* Анимация для последовательного появления заказов */
+.order-item {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.order-item:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.order-item:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Декоративные элементы */
+.order-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .orders-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .order-item {
+        padding: 2rem 1.5rem;
+    }
+
+    .orders-container h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .order-item img {
+        max-width: 100%;
+        margin: 0 auto 1.5rem auto;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .orders-container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .order-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .orders-container h2 {
+        font-size: 1.75rem;
+    }
+
+    .order-item span {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .order-item button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        width: 100%;
+    }
+}
+
+/* Стили для разных статусов заказа */
+.status-new {
+    color: #e67e22;
+    font-weight: 600;
+}
+
+.status-in-progress {
+    color: #3498db;
+    font-weight: 600;
+}
+
+.status-completed {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.status-cancelled {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Дополнительная информация о заказе */
+.order-meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e5e9;
+}
+
+.order-meta span {
+    background: none !important;
+    border-left: none !important;
+    padding: 0.5rem 0 !important;
+    margin: 0 !important;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+    .no-orders {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .no-orders p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .btn-create-order {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-create-order:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      color: white;
+      text-decoration: none;
+    }

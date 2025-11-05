@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BookHub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="logo" href="{% url 'index' %}">BookHub</a>
+        <ul class="nav-links">
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'profile' %}">Профиль {{ user.username }}</a></li>
+              <li><a href="{% url 'order:list' %}">Мои заказы</a></li>
+              <li><a href="{% url 'order:create' %}">Создать заказ</a></li>
+              <li><a href="{% url 'logout' %}"
+		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
+
+            <form id="logout-form" method="POST" style="display: none;" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-link">Выйти</button>
+            </form></li>
+
+            {% else %}
+              <li><a href="{% url 'login' %}">Войти</a></li>
+              <li><a href="{% url 'register' %}">Регистрация</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

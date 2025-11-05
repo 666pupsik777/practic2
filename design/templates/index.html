@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load order_tags %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="design-pro-container">
+    <div class="decoration-circle circle-1"></div>
+    <div class="decoration-circle circle-2"></div>
+    <div class="decoration-circle circle-3"></div>
+
+    <div class="design-pro-content">
+        <div class="animate-fade-in">
+            <h1 class="main-title animate-float">BookHub</h1>
+            <p class="main-subtitle">Библиотека</p>
+        </div>
+
+        <div class="content-section animate-fade-in" style="animation-delay: 0.3s;">
+            {% if user.is_authenticated %}
+                <div style="text-align: center;">
+                    <h2 style="color: #8b00ff; > Ваши заказы </h2>
+                    {% show_all_tags %}
+                </div>
+            {% else %}
+                <div class="auth-message">
+                    <p class="auth-text">
+                        Чтобы увидеть свои заказы и управлять ими,<br>
+                        войдите в свою учетную запись
+                    </p>
+                    <a href="{% url 'login' %}" class="auth-button">
+                        Войти в систему
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
