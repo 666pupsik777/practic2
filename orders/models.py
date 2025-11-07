@@ -5,7 +5,7 @@ from django.db import models
 class Order(models.Model):
     class ChoicesStatus(models.TextChoices):
         NEW = 'Новая', "Новая"
-        ACCEPT = 'Принято', 'Принято'
+        ACCEPT = 'Принято в работу', 'Принято в работу'
         DONE = 'Выполнено', 'Выполнено'
 
     class ChoicesDesign(models.TextChoices):
