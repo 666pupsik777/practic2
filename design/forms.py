@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+
 
 from .models import CustomUser
 
@@ -72,7 +73,7 @@ class LoginForm(AuthenticationForm):
 
 
 class Registration(CreateView):
-    model = CustomUser
+    model = get_user_model()
     form_class = RegisterUserForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')

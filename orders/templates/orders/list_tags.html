@@ -1,20 +1,33 @@
-{% extends 'base_generic.html' %}
+{% load static %} <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваши заказы</title>
 
-{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
   <div class="orders-container">
     <h2>Ваши заказы</h2>
 
+    {<h2>Ваши заказы</h2>
     {% for order in orders %}
       <div class="order-item">
-        <img src="{{ order.photo.url }}" alt="Фото">
+        <img src="{{ order.photo.url }}" alt="Фото заявки" style="max-width: 200px;"><br>
+        <span>Название заказа: {{ order.title }}</span><br>
+        <span>Описание заказа: {{ order.description }}</span><br>
+        <span>Статус заказа: {{ order.status  }}</span><br>
+        <span>Время создания: {{ order.time_create }}</span><br>
+        <span>Категория заявки: {{order.category}}</span><br>
+        <form action="{% url 'order:delete' order.pk %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit"  class="btn btn-primary" >Удалить</button>
+        </form>
 
-        <span><strong>Название заказа:</strong> {{ order.title }}</span>
-        <span><strong>Описание заказа:</strong> {{ order.description }}</span>
-        <span><strong>Статус заказа:</strong>
-          <span class="status-{{ order.status|lower }}">{{ order.status }}</span>
-        </span>
-        <span><strong>Время создания:</strong> {{ order.time_create }}</span>
-        <span><strong>Категория заявки:</strong> {{ order.category }}</span>
+      </div>
+    {% endfor %}
 
         <div class="order-meta">
           <span>ID: #{{ order.pk }}</span>
@@ -41,9 +54,5 @@
     {% endfor %}
   </div>
 
- <script>
-    function confirmDelete() {
-        return confirm('Вы уверены, что хотите удалить этот заказ?');
-    }
-</script>
-{% endblock %}
+</body>
+</html>
