@@ -5,8 +5,6 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 
-from .models import CustomUser
-
 
 class RegisterUserForm(forms.ModelForm):
     username = forms.CharField(
